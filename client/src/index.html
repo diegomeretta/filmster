@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="has-background-light">
 <head>
     <meta charset="UTF-8">
@@ -30,9 +30,9 @@
                         <header class="card-header">
                             <div class="card-header-title">Películas</div>
                             <div class="card-header-actions">
-                                <button class="button is-small">Agregar</button>
-                                <button class="button is-small">Editar</button>
-                                <button class="button is-small">Eliminar</button>
+                                <button id="button_1" class="button is-medium is-dark">Agregar</button>
+                                <button class="button is-medium">Editar</button>
+                                <button class="button is-medium">Eliminar</button>
                             </div>
                         </header>
 
@@ -49,4 +49,12 @@
     </div>
 </body>
 <script src="/index.mjs" type="module"></script>
+<script type="text/javascript">
+var b = document.getElementById("button_1");
+b.addEventListener("click", enDesarrollo);
+
+function enDesarrollo(){
+    alert("En desarrollo");
+}
+</script>
 </html>
