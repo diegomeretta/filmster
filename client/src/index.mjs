@@ -12,6 +12,11 @@ window.table = Table('#movies', {
             label: 'Guionistas',
             field: 'writers',
             render: function (data) { return data.join(', ') }
+        },
+        {
+            label: 'Generos',
+            field: 'genres',
+            render: function (data) { return data.join(', ') }
         }
     ],
     data: [],

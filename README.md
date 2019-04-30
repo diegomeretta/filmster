@@ -1,5 +1,13 @@
 # Filmster
 
+GRUPO Número 6
+
+Diego Meretta
+
+Ariel Pessotano
+
+Christian Barnasthpol
+
 Aplicación utilizada en la cursada 2019 de Ingenieria de Software. UTN-FRLP
 
 ## Dependencias
