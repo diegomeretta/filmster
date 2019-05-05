@@ -33,7 +33,7 @@
                             <div class="card-header-actions">
                                 <button class="button is-medium is-dark" id="addMovieBtn">Agregar</button>
                                 <button class="button is-medium">Editar</button>
-                                <button class="button is-medium">Eliminar</button>
+                                <button class="button is-medium" id="delMovieBtn" href="/api/v1/movies/{id}.delete">Eliminar</button>
 
                             </div>
                         </header>
@@ -149,6 +149,26 @@
             </footer>
         </div>
     </div>
+    
+    <!--Modal para el eliminar-->
+    <!--<div class="modal" id="modal2">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Eliminar película</p>
+            <button class="delete" aria-label="close" id="closeModalBtn2"></button>
+          </header>
+          <section class="modal-card-body">
+            <p class="is-small">Esta seguro que desea eliminar la película seleccionada?</p>
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button is-success" id="siBtnModal2">Sí</button>
+            <button class="button" id="noBtnModal2">No</button>
+          </footer>
+        </div>
+      </div>-->
+
+
 </body>
 <script src="/index.mjs" type="module"></script>
 </html>
