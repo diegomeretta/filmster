@@ -1,6 +1,8 @@
 import Table from './components/table.mjs'
 import movieService from './api/movie.mjs'
 
+
+
 // Inicializamos la tabla
 window.table = Table('#movies', {
     header: [
@@ -40,9 +42,9 @@ const $refs = {
     saveMovieBtn: document.querySelector('#saveMovieBtn'),
     addMovieBtn: document.querySelector('#addMovieBtn'),
     closeModalBtn: document.querySelector('#closeModalBtn'),
-
+    delMovieBtn: document.querySelector('#delMovieBtn'),
     modal: document.querySelector('#modal'),
-
+    
     movieName: document.querySelector('#movieName'),
     moviePlot: document.querySelector('#moviePlot'),
     movieReleaseDate: document.querySelector('#movieReleaseDate'),
@@ -68,6 +70,7 @@ function closeModal() {
     $refs.modal.classList.remove('is-active')
 }
 
+
 function parseCSV(val) {
     return val.split(',').flatMap(v => v.split());
 }
@@ -88,11 +91,36 @@ function saveMovie() {
         directors: parseCSV($refs.movieDirectors.value)
     }
 
+
     console.log(movie)
 }
+
+/* Llegue hasta cambiar el id a mano */
+function deleteMovies(){
+       
+    if(table.getSelectedRows()){
+    fetch('/api/v1/movies/2', {
+        method: 'delete'
+    }
+    )
+    .then(function(response) {
+        return response.text();
+    })
+    .then(function(data) {
+        console.log('data = ', data);
+    })
+    .catch(function(err) {
+        console.error(err);
+    });
+}
+}    
+
+   
+
 
 // Levantamos los listeners de la app
 $refs.addMovieBtn.addEventListener('click', openModal)
 $refs.cancelModalBtn.addEventListener('click', closeModal)
 $refs.closeModalBtn.addEventListener('click', closeModal)
 $refs.saveMovieBtn.addEventListener('click', saveMovie)
+$refs.delMovieBtn.addEventListener('click', deleteMovies)
