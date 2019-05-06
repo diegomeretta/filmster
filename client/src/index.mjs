@@ -90,6 +90,11 @@ function saveMovie() {
         writers: parseCSV($refs.movieWriters.value),
         directors: parseCSV($refs.movieDirectors.value)
     }
+   movieService.saveMovie(movie).then(resp => {
+	        console.log(resp);
+	        movieService.getAll().then(table.update)
+	    }).catch(er => console.log(er))
+	
 
 
     console.log(movie)
