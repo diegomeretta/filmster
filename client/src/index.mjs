@@ -1,6 +1,8 @@
 import Table from './components/table.mjs'
 import movieService from './api/movie.mjs'
 
+
+
 // Inicializamos la tabla
 window.table = Table('#movies', {
     header: [
@@ -40,12 +42,9 @@ const $refs = {
     saveMovieBtn: document.querySelector('#saveMovieBtn'),
     addMovieBtn: document.querySelector('#addMovieBtn'),
     closeModalBtn: document.querySelector('#closeModalBtn'),
-    /*delMovieBtn: document.querySelector('#delMovieBtn'),*/
+    delMovieBtn: document.querySelector('#delMovieBtn'),
     modal: document.querySelector('#modal'),
-    /*modal2: document.querySelector('#modal2'),
-    closeModalBtn2: document.querySelector('#closeModalBtn2'),
-    siBtnModal2: document.querySelector('#siBtnModal2'),
-    noBtnModal2: document.querySelector('#noBtnModal2'),*/
+    
     movieName: document.querySelector('#movieName'),
     moviePlot: document.querySelector('#moviePlot'),
     movieReleaseDate: document.querySelector('#movieReleaseDate'),
@@ -64,22 +63,12 @@ function openModal() {
     $refs.modal.classList.add('is-active')
 }
 
-/*function openModal2() {
-    $refs.modal2.classList.add('is-active')
-    
-}*/
-
 /*
  * Cierra el modal
  */
 function closeModal() {
     $refs.modal.classList.remove('is-active')
 }
-
-/*function closeModal2() {
-    $refs.modal2.classList.remove('is-active')
-}*/
-
 
 
 function parseCSV(val) {
@@ -102,9 +91,31 @@ function saveMovie() {
         directors: parseCSV($refs.movieDirectors.value)
     }
 
+
     console.log(movie)
 }
 
+/* Llegue hasta cambiar el id a mano */
+function deleteMovies(){
+       
+    if(table.getSelectedRows()){
+    fetch('/api/v1/movies/2', {
+        method: 'delete'
+    }
+    )
+    .then(function(response) {
+        return response.text();
+    })
+    .then(function(data) {
+        console.log('data = ', data);
+    })
+    .catch(function(err) {
+        console.error(err);
+    });
+}
+}    
+
+   
 
 
 // Levantamos los listeners de la app
@@ -112,7 +123,4 @@ $refs.addMovieBtn.addEventListener('click', openModal)
 $refs.cancelModalBtn.addEventListener('click', closeModal)
 $refs.closeModalBtn.addEventListener('click', closeModal)
 $refs.saveMovieBtn.addEventListener('click', saveMovie)
-/*$refs.delMovieBtn.addEventListener('click',)
-$refs.noBtnModal2.addEventListener('click', closeModal2)
-$refs.closeModalBtn2.addEventListener('click', closeModal2)
-$refs.siBtnModal2.addEventListener('click', deleteMovie)*/
+$refs.delMovieBtn.addEventListener('click', deleteMovies)
