@@ -95,25 +95,16 @@ function saveMovie() {
     console.log(movie)
 }
 
-/* Llegue hasta cambiar el id a mano */
-function deleteMovies(){
-       
-    if(table.getSelectedRows()){
-    fetch('/api/v1/movies/2', {
-        method: 'delete'
-    }
-    )
-    .then(function(response) {
-        return response.text();
-    })
-    .then(function(data) {
-        console.log('data = ', data);
-    })
-    .catch(function(err) {
-        console.error(err);
-    });
-}
-}    
+
+
+function borrarPelicula(){
+    
+    var arreglo = table.getSelectedRows();  
+    var id = arreglo[0].id;
+    console.log(id);
+    movieService.deleteMovie(id);
+
+    }    
 
    
 
@@ -123,4 +114,4 @@ $refs.addMovieBtn.addEventListener('click', openModal)
 $refs.cancelModalBtn.addEventListener('click', closeModal)
 $refs.closeModalBtn.addEventListener('click', closeModal)
 $refs.saveMovieBtn.addEventListener('click', saveMovie)
-$refs.delMovieBtn.addEventListener('click', deleteMovies)
+$refs.delMovieBtn.addEventListener('click', borrarPelicula)
