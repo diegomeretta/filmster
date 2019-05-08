@@ -1,2 +1,5 @@
 /node_modules/
 /server/database.sqlite
+client/src/api/.movie.mjs.swp
+.gitignore
+.vscode/launch.json
