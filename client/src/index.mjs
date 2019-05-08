@@ -80,23 +80,17 @@ function parseCSV(val) {
  */
 function saveMovie() {
     const movie = {
-        name: $refs.movieName.value,
-        plot: $refs.moviePlot.value,
-        year: new Date($refs.movieReleaseDate.value),
+        title: $refs.movieName.value,
+        description: $refs.moviePlot.value,
+        year: (new Date($refs.movieReleaseDate.value)).getYear(),
         country: $refs.movieCountry.value,
         runtime: +$refs.movieRuntime.value,
         language: $refs.movieLanguage.value,
-        generes: parseCSV($refs.movieGeneres.value),
+        genres: parseCSV($refs.movieGeneres.value),
         writers: parseCSV($refs.movieWriters.value),
         directors: parseCSV($refs.movieDirectors.value)
     }
-   movieService.saveMovie(movie).then(resp => {
-	        console.log(resp);
-	        movieService.getAll().then(table.update)
-	    }).catch(er => console.log(er))
-	
-
-
+    movieService.create(movie)
     console.log(movie)
 }
 
