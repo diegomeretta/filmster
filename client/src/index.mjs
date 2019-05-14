@@ -1,4 +1,5 @@
 import Table from './components/table.mjs'
+import { parseCSV } from './utils.mjs'
 import movieService from './api/movie.mjs'
 
 
@@ -68,11 +69,6 @@ function openModal() {
  */
 function closeModal() {
     $refs.modal.classList.remove('is-active')
-}
-
-
-function parseCSV(val) {
-    return val.split(',').flatMap(v => v.split());
 }
 
 /*
