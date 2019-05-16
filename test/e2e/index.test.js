@@ -37,6 +37,14 @@ test('El modal de agregar película debería iniciar oculto', async () => {
     expect(visibility).toBe(false);
 })
 
+test('El modal de agregar película debería abrirse al hacer click en Agregar', async () => {
+    await page.reload();
+    const agregarBtn = await page.$('.card-header-actions button:nth-child(1)');
+    await page.$eval('.card-header-actions button:nth-child(1)', firstCheck => firstCheck.click());
+    const visibility = await isVisible('#modal');
+    expect(visibility).toBe(true);
+})
+
 test('Debería renderizar la tabla de películas', async () => {
     // $ es como querySelector
 
