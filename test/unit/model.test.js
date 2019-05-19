@@ -69,3 +69,29 @@ test('Obtener película', async () => {
 
     // Completar test
 });
+
+test('Eliminar película', async () => {
+    const movieData = {
+        title: 'Batman',
+        description: 'Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown.',
+        year: 1985,
+        runtime: 116,
+        country: 'United States',
+        language: 'English',
+        genres: ['Adventure', 'Comedy', 'Science Fiction'],
+        directors: ['Robert Zemeckis'],
+        writers: ['Robert Zemeckis', 'Bob Gale']
+    };
+
+    // Creamos la pelicula
+    const movie = await MovieModels.create(movieData)
+    const deletedMovie = await MovieModels.delete(movie.id)
+    const movieAfterDeletion = await MovieModels.get(movie.id);
+
+    expect(movieAfterDeletion).toBe(null);
+
+    // Completar test
+
+});
+
+
